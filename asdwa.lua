@@ -2436,7 +2436,8 @@ function RayfieldLibrary:CreateWindow(Settings)
 		-- Section
 		function Tab:CreateSection(SectionName)
 			local SectionValue = {}
-
+			
+			print(SDone, Elements, Elements.Template, Elements.Template.SectionSpacing)
 			if SDone and Elements.Template.SectionSpacing then
 				local SectionSpace = Elements.Template.SectionSpacing:Clone()
 				SectionSpace.Visible = true
