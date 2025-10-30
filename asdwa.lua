@@ -2420,16 +2420,24 @@ function RayfieldLibrary:CreateWindow(Settings)
 
 		-- Section
 		function Tab:CreateSection(SectionName)
-
+			local watchonmyrizz
+			if Elements == nil then
+				for Index, Value in CoreGui:GetChildren() do
+					if Value:FindFirstChild('Rayfield') then
+						watchonmyrizz = Value:FindFirstChild('Rayfield')
+					end
+				end
+			end
+			print(watchonmyrizz.Template.Name)
 			local SectionValue = {}
 
-			if SDone and Elements:FindFirstChild('Template'):FindFirstChild('SectionSpacing') then
-				local SectionSpace = Elements.Template.SectionSpacing:Clone()
+			if SDone and watchonmyrizz:FindFirstChild('Template'):FindFirstChild('SectionSpacing') then
+				local SectionSpace = watchonmyrizz.Template.SectionSpacing:Clone()
 				SectionSpace.Visible = true
 				SectionSpace.Parent = TabPage
 			end
 
-			local Section = Elements.Template.SectionTitle:Clone()
+			local Section = watchonmyrizz.Template.SectionTitle:Clone()
 			Section.Title.Text = SectionName
 			Section.Visible = true
 			Section.Parent = TabPage
