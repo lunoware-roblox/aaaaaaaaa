@@ -2455,7 +2455,7 @@ function RayfieldLibrary:CreateWindow(Settings)
 				Section.Title.Text = NewSection
 			end
 
-			SDone = true
+			SDone = false
 
 			return SectionValue
 		end
