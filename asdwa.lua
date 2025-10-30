@@ -735,6 +735,21 @@ local dragBar = Rayfield:FindFirstChild('Drag')
 local dragInteract = dragBar and dragBar.Interact or nil
 local dragBarCosmetic = dragBar and dragBar.Drag or nil
 
+repeat
+	task.wait()
+	--
+	 Main = Rayfield.Main
+	 MPrompt = Rayfield:FindFirstChild('Prompt')
+	 Topbar = Main.Topbar
+	 Elements = Main.Elements
+	 LoadingFrame = Main.LoadingFrame
+	 TabList = Main.TabList
+	 dragBar = Rayfield:FindFirstChild('Drag')
+	 dragInteract = dragBar and dragBar.Interact or nil
+	 dragBarCosmetic = dragBar and dragBar.Drag or nil
+until Rayfield and Rayfield.Parent and Rayfield:FindFirstChild('Main') and Rayfield:FindFirstChild('Main'):FindFirstChild('Elements'):FindFirstChild('Template')
+print(Rayfield:FindFirstChild('Main'):FindFirstChild('Elements'):FindFirstChild('Template').Name)
+
 local dragOffset = 255
 local dragOffsetMobile = 150
 
@@ -2420,24 +2435,15 @@ function RayfieldLibrary:CreateWindow(Settings)
 
 		-- Section
 		function Tab:CreateSection(SectionName)
-			local watchonmyrizz
-			if Elements == nil then
-				for Index, Value in CoreGui:GetChildren() do
-					if Value:FindFirstChild('Rayfield') then
-						watchonmyrizz = Value:FindFirstChild('Rayfield')
-					end
-				end
-			end
-			print(watchonmyrizz.Template.Name)
 			local SectionValue = {}
 
-			if SDone and watchonmyrizz:FindFirstChild('Template'):FindFirstChild('SectionSpacing') then
-				local SectionSpace = watchonmyrizz.Template.SectionSpacing:Clone()
+			if SDone and Elements.Template.SectionSpacing then
+				local SectionSpace = Elements.Template.SectionSpacing:Clone()
 				SectionSpace.Visible = true
 				SectionSpace.Parent = TabPage
 			end
 
-			local Section = watchonmyrizz.Template.SectionTitle:Clone()
+			local Section = Elements.Template.SectionTitle:Clone()
 			Section.Title.Text = SectionName
 			Section.Visible = true
 			Section.Parent = TabPage
